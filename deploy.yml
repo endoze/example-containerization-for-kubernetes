@@ -17,3 +17,13 @@ spec:
         - name: rack-app
           image: rack-app:latest
           imagePullPolicy: IfNotPresent
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9292
+          livenessProde:
+            httpGet:
+              path: /
+              port: 9292
+            initialDelaySeconds: 2
+            periodSeconds: 5
