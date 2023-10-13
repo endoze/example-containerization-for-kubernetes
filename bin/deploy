@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# bail out of script if any commands error
+set -e
+
+# set some variables up for reuse
+COMMITISH="$(git rev-parse HEAD | cut -c 1-8)"
+export COMMITISH=$COMMITISH
+
+# apply our Kubernetes manifests
+kubectl apply -f service.yml
+envsubst <deploy.yml | kubectl apply -f -

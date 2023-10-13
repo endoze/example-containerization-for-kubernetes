@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rack-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rack-app
+  template:
+    metadata:
+      labels:
+        app: rack-app
+    spec:
+      containers:
+        - name: rack-app
+          image: rack-app:latest
+          imagePullPolicy: IfNotPresent

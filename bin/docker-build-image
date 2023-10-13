@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# bail out of script if any commands error
+set -e 
+
+# set some variables up for reuse
+COMMITISH="$(git rev-parse HEAD | CUT -c 1-8)"
+PWD="$(pwd)"
+PROJECT_NAME="$(basename $PWD)"
+
+docker build -t "$PROJECT_NAME:$BRANCH" .
+
+# on our master branch we tag a deploy version with the COMMITISH
+# in the name
+if [ "${BRANCH}" = "master" ]; then
+  echo "on master branch"
+  docker tag "$PROJECT_NAME:$BRANCH" "$PROJECT_NAME:deploy-$COMMITISH"
+fi
+
+docker push --all-tags "$PROJECT_NAME"
