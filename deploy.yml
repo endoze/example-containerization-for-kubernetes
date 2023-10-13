@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: rack-app
-          image: rack-app:latest
+          image: rack-app:deploy-$COMMITISH
           imagePullPolicy: IfNotPresent
           readinessProbe:
             httpGet:
