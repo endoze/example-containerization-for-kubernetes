@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 # bail out of script if any commands error
-set -e 
+set -e
 
 # set some variables up for reuse
 COMMITISH="$(git rev-parse HEAD | CUT -c 1-8)"
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 PWD="$(pwd)"
 PROJECT_NAME="$(basename $PWD)"
 
