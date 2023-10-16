@@ -21,7 +21,7 @@ spec:
             httpGet:
               path: /
               port: 9292
-          livenessProde:
+          livenessProbe:
             httpGet:
               path: /
               port: 9292
