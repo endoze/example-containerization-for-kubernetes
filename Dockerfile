@@ -10,5 +10,7 @@ RUN apk --update add --no-cache --virtual run-dependencies \
 # copy our app.ru file into the filesystem of our image
 COPY app.ru app.ru
 
+EXPOSE 9292
+
 # run our application via rackup
-CMD rackup app.ru
+CMD ["rackup", "-o", "0.0.0.0", "app.ru"]
