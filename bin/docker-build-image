@@ -7,7 +7,7 @@ set -e
 COMMITISH="$(git rev-parse HEAD | CUT -c 1-8)"
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 PWD="$(pwd)"
-PROJECT_NAME="$(basename $PWD)"
+PROJECT_NAME="rack-app"
 
 docker build -t "$PROJECT_NAME:$BRANCH" .
 
